@@ -1,37 +1,35 @@
-
 .spinner-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 20px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+}
+
+.spinner-border {
+  width: 2rem;
+  height: 2rem;
+  border: 0.3em solid rgba(0, 0, 0, 0.1);
+  border-top: 0.3em solid #f3f7f6;
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  .spinner-border {
-    width: 2rem;
-    height: 2rem;
-    border: 0.3em solid rgba(0, 0, 0, 0.1);
-    border-top: 0.3em solid #f3f7f6; 
-    border-radius: 50%;
-    animation: spin 1.5s linear infinite;
+  100% {
+    transform: rotate(360deg);
   }
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-  
-  .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    border: 0;
-    clip: rect(0, 0, 0, 0);
-    clip-path: inset(100%);
-    overflow: hidden;
-  }
-  
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(100%);
+  overflow: hidden;
+}
