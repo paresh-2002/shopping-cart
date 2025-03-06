@@ -111,7 +111,7 @@ function Carts() {
         </div>
       </div>
       <div className="carts">
-        {searchVal || state.products.length <= 0 ? (
+        { filteredProducts.length <= 0  || state.products.length <= 0 ? (
           <h1 className="header-title">No products in the cart</h1>
         ) : (
           filteredProducts.map((product) => (
