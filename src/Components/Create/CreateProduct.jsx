@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./createProduct.css";
-import LoadingSpinner from "../spinner/LoadingSpinner";
+import "./CreateProduct.css";
+import LoadingSpinner from "../Spinner/LoadingSpinner";
 import { useNavigate, useParams } from "react-router-dom";
 
 const categoryList = [

@@ -1,7 +1,7 @@
 import './App.css';
-import CreateProduct from './Components/AddToCard/CreateProduct';
 import Carts from './Pages/Carts';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import CreateProduct from './Components/Create/CreateProduct.jsx'
 
 function App() {
   return (
