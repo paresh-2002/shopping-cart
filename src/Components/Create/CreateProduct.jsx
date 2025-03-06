@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./CreateProduct.css";
-import LoadingSpinner from "../Spinner/LoadingSpinner";
 import { useNavigate, useParams } from "react-router-dom";
+import LoadingSpinner from "../spinner/LoadingSpinner";
 
 const categoryList = [
   { name: "fashion" },
