@@ -139,6 +139,10 @@
     box-shadow: 0 0 6px rgba(87, 88, 88, 0.7); 
     border-color: #575858;
   }
+  .fetch_spinner{
+    max-width: 100%;
+    margin: auto;
+  }
 
   /* --------------------------------------------------- */
   

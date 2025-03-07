@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "productName": "Camera",
+    "productPrice": "199.00",
+    "productImg": "https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "category": "mobile",
+    "description": "a device that captures light and processes it into an image"
+  },
+  {
+    "id": 2,
+    "productName": "Headphone",
+    "productPrice": "199.00",
+    "productImg": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": "mobile",
+    "description": "a device that captures light and processes it into an image"
+  },
+  {
+    "id": 3,
+    "productName": "Shoes",
+    "productPrice": "299.00",
+    "productImg": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": "shoes",
+    "description": "a device that captures light and processes it into an image"
+  },
+  {
+    "id": 4,
+    "productName": "Potted Plant",
+    "productPrice": "99.00",
+    "productImg": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": "home",
+    "description": "photo of plant, potted plant, succulent, and minimal by Galina N"
+  },
+  {
+    "id": 5,
+    "productName": "Android Smartwatch",
+    "productPrice": "199.00",
+    "productImg": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1999&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "category": "home",
+    "description": "Free to use under the Unsplash License"
+  },
+  {
+    "id": 6,
+    "productName": "Close-up of Red",
+    "productPrice": "19.00",
+    "productImg": "https://images.pexels.com/photos/335257/pexels-photo-335257.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "category": "home",
+    "description": "Close-up of Red Object over White Background"
+  }
+]

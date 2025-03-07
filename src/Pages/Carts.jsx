@@ -4,9 +4,11 @@ import "../Components/Cart/Cart.css";
 import "./Carts.css";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import Products from "../Data/Products.json";
+import LoadingSpinner from "../Components/spinner/LoadingSpinner";
 
 const initialState = {
-  products: [],
+  products: Products || [],
   addToCarts: [],
 };
 
@@ -43,23 +45,31 @@ const cartReducer = (state, action) => {
 
 function Carts() {
   const [state, dispatch] = useReducer(cartReducer, initialState);
+  const [loading, setLoading] = useState(false);
+  console.log(state.products);
   const [searchVal, setSearchVal] = useState("");
 
   const filteredProducts = state.products.filter((product) =>
-
     product?.productName?.toLowerCase().includes(searchVal.toLowerCase())
   );
 
   useEffect(() => {
-    const products = localStorage.getItem("products");
-    if (products) {
-      dispatch({ type: "SET_PRODUCTS", payload: JSON.parse(products) });
-    }
+    setLoading(true);
+    fetch("/data/Products.json")
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch({ type: "SET_PRODUCTS", payload: data });
+        
+      })
+      .catch((error) => console.error("Error fetching products:", error));
 
     const cart = localStorage.getItem("addToCart");
     if (cart) {
       dispatch({ type: "ADD_CART", payload: JSON.parse(cart) });
     }
+    setTimeout(()=>{
+      setLoading(false)
+    },2000)
   }, []);
 
   const addToCart = (product) => {
@@ -111,7 +121,11 @@ function Carts() {
         </div>
       </div>
       <div className="carts">
-        { filteredProducts.length <= 0  || state.products.length <= 0 ? (
+        {loading ? (
+          <div className="fetch_spinner">
+            <LoadingSpinner />
+          </div>
+        ) : filteredProducts.length <= 0 || state.products.length <= 0 ? (
           <h1 className="header-title">No products in the cart</h1>
         ) : (
           filteredProducts.map((product) => (
