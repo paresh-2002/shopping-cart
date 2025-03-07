@@ -24,7 +24,7 @@ function Cart({ product, handleDelete, addToCart, addedCarts, DeleteToCart }) {
       <div className="add-to-cart">
         {/* Conditionally render button based on whether the product is already in the cart */}
         {isAddedToCart ? (
-          <button onClick={() => DeleteToCart(product.id)}>Remove from Cart</button>
+          <button onClick={() => DeleteToCart(product.id)} class='remove-btn'>Remove from Cart</button>
         ) : (
           <button onClick={() => addToCart(product)}>Add to Cart</button>
         )}

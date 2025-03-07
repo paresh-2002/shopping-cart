@@ -88,6 +88,13 @@
   background-color: #0d5f5a;
 }
 
+.add-to-cart .remove-btn{
+  background-color: #bb1c1c;
+}
+
+.add-to-cart .remove-btn:hover {
+  background-color: #a12020;
+}
 
 @media (max-width: 1024px) {
   .card {
