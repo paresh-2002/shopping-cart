@@ -4,8 +4,8 @@ import "../Components/Cart/Cart.css";
 import "./Carts.css";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
-import Products from "../Data/Products.json";
-import LoadingSpinner from "../Components/spinner/LoadingSpinner";
+import Products from '../Data/Products.json'
+
 
 const initialState = {
   products: Products || [],
@@ -27,16 +27,12 @@ const cartReducer = (state, action) => {
     case "DELETE_PRODUCT":
       return {
         ...state,
-        products: state.products.filter(
-          (product) => product.id !== action.payload
-        ),
+        products: state.products.filter((product) => product.id !== action.payload),
       };
     case "DELETE_TO_CART":
       return {
         ...state,
-        addToCarts: state.addToCarts.filter(
-          (product) => product.id !== action.payload
-        ),
+        addToCarts: state.addToCarts.filter((product) => product.id !== action.payload),
       };
     default:
       return state;
@@ -45,8 +41,6 @@ const cartReducer = (state, action) => {
 
 function Carts() {
   const [state, dispatch] = useReducer(cartReducer, initialState);
-  const [loading, setLoading] = useState(false);
-  console.log(state.products);
   const [searchVal, setSearchVal] = useState("");
 
   const filteredProducts = state.products.filter((product) =>
@@ -54,28 +48,31 @@ function Carts() {
   );
 
   useEffect(() => {
-    setLoading(true);
-    fetch("/data/Products.json")
-      .then((response) => response.json())
-      .then((data) => {
-        dispatch({ type: "SET_PRODUCTS", payload: data });
-        
-      })
-      .catch((error) => console.error("Error fetching products:", error));
+    const localProducts = localStorage.getItem("products");
+    const localCart = localStorage.getItem("addToCart");
 
-    const cart = localStorage.getItem("addToCart");
-    if (cart) {
-      dispatch({ type: "ADD_CART", payload: JSON.parse(cart) });
+    let mergedProducts = Products;
+
+    if (localProducts) {
+      const localData = JSON.parse(localProducts);
+      mergedProducts = [
+        ...Products,
+        ...localData.filter(
+          (localProduct) =>
+            !Products.some((product) => product.id === localProduct.id)
+        ),
+      ];
     }
-    setTimeout(()=>{
-      setLoading(false)
-    },2000)
+
+    dispatch({ type: "SET_PRODUCTS", payload: mergedProducts });
+
+    if (localCart) {
+      dispatch({ type: "ADD_CART", payload: JSON.parse(localCart) });
+    }
   }, []);
 
   const addToCart = (product) => {
-    const isProductInCart = state.addToCarts.some(
-      (item) => item.id === product.id
-    );
+    const isProductInCart = state.addToCarts.some((item) => item.id === product.id);
     if (!isProductInCart) {
       const updatedCart = [...state.addToCarts, product];
       localStorage.setItem("addToCart", JSON.stringify(updatedCart));
@@ -86,16 +83,13 @@ function Carts() {
   };
 
   const handleDelete = (productId) => {
-    const updatedCart = state.products.filter(
-      (product) => product.id !== productId
-    );
-    localStorage.setItem("products", JSON.stringify(updatedCart));
+    const updatedProducts = state.products.filter((product) => product.id !== productId);
+    localStorage.setItem("products", JSON.stringify(updatedProducts));
     dispatch({ type: "DELETE_PRODUCT", payload: productId });
   };
+
   const DeleteToCart = (productId) => {
-    const updatedCart = state.addToCarts.filter(
-      (product) => product.id !== productId
-    );
+    const updatedCart = state.addToCarts.filter((product) => product.id !== productId);
     localStorage.setItem("addToCart", JSON.stringify(updatedCart));
     dispatch({ type: "DELETE_TO_CART", payload: productId });
   };
@@ -121,11 +115,7 @@ function Carts() {
         </div>
       </div>
       <div className="carts">
-        {loading ? (
-          <div className="fetch_spinner">
-            <LoadingSpinner/>
-          </div>
-        ) : filteredProducts.length <= 0 || state.products.length <= 0 ? (
+        {filteredProducts.length <= 0 || state.products.length <= 0 ? (
           <h1 className="header-title">No products in the cart</h1>
         ) : (
           filteredProducts.map((product) => (
