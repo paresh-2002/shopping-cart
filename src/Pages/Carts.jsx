@@ -123,7 +123,7 @@ function Carts() {
       <div className="carts">
         {loading ? (
           <div className="fetch_spinner">
-            <LoadingSpinner />
+            <LoadingSpinner/>
           </div>
         ) : filteredProducts.length <= 0 || state.products.length <= 0 ? (
           <h1 className="header-title">No products in the cart</h1>
