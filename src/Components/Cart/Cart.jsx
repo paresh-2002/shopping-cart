@@ -19,12 +19,13 @@ function Cart({ product, handleDelete, addToCart, addedCarts, DeleteToCart }) {
       <div>
         <h1 className="product-name">{product.productName}</h1>
         <p className="price">${product.productPrice}</p>
+        <p className="product-description">{product.category}</p>
         <p className="product-description">{product.description}</p>
       </div>
       <div className="add-to-cart">
         {/* Conditionally render button based on whether the product is already in the cart */}
         {isAddedToCart ? (
-          <button onClick={() => DeleteToCart(product.id)} class='remove-btn'>Remove from Cart</button>
+          <button onClick={() => DeleteToCart(product.id)} className='remove-btn'>Remove from Cart</button>
         ) : (
           <button onClick={() => addToCart(product)}>Add to Cart</button>
         )}

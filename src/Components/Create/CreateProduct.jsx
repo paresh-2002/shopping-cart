@@ -83,7 +83,7 @@ function CreateProduct() {
   };
 
   return (
-    <div className="container">
+    <div className="container-main">
       <div className="sticky-header">
         <h2 className="header">{productId ? "Edit Product" : "Add Product"}</h2>
       </div>

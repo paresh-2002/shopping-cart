@@ -1,11 +1,10 @@
 import React, { useReducer, useEffect, useState } from "react";
 import Cart from "../Components/Cart/Cart";
-import "../Components/Cart/Cart.css";
 import "./Carts.css";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
-import Products from '../Data/Products.json'
-
+import Products from "../Data/Products.json";
+import CartModel from "../Components/AddCratModel/CartModel";
 
 const initialState = {
   products: Products || [],
@@ -27,12 +26,16 @@ const cartReducer = (state, action) => {
     case "DELETE_PRODUCT":
       return {
         ...state,
-        products: state.products.filter((product) => product.id !== action.payload),
+        products: state.products.filter(
+          (product) => product.id !== action.payload
+        ),
       };
     case "DELETE_TO_CART":
       return {
         ...state,
-        addToCarts: state.addToCarts.filter((product) => product.id !== action.payload),
+        addToCarts: state.addToCarts.filter(
+          (product) => product.id !== action.payload
+        ),
       };
     default:
       return state;
@@ -42,6 +45,7 @@ const cartReducer = (state, action) => {
 function Carts() {
   const [state, dispatch] = useReducer(cartReducer, initialState);
   const [searchVal, setSearchVal] = useState("");
+  const [openModel, setOpenModel] = useState(false)
 
   const filteredProducts = state.products.filter((product) =>
     product?.productName?.toLowerCase().includes(searchVal.toLowerCase())
@@ -65,6 +69,7 @@ function Carts() {
     }
 
     dispatch({ type: "SET_PRODUCTS", payload: mergedProducts });
+    localStorage.setItem("products", JSON.stringify(mergedProducts));
 
     if (localCart) {
       dispatch({ type: "ADD_CART", payload: JSON.parse(localCart) });
@@ -72,7 +77,9 @@ function Carts() {
   }, []);
 
   const addToCart = (product) => {
-    const isProductInCart = state.addToCarts.some((item) => item.id === product.id);
+    const isProductInCart = state.addToCarts.some(
+      (item) => item.id === product.id
+    );
     if (!isProductInCart) {
       const updatedCart = [...state.addToCarts, product];
       localStorage.setItem("addToCart", JSON.stringify(updatedCart));
@@ -83,13 +90,17 @@ function Carts() {
   };
 
   const handleDelete = (productId) => {
-    const updatedProducts = state.products.filter((product) => product.id !== productId);
+    const updatedProducts = state.products.filter(
+      (product) => product.id !== productId
+    );
     localStorage.setItem("products", JSON.stringify(updatedProducts));
     dispatch({ type: "DELETE_PRODUCT", payload: productId });
   };
 
   const DeleteToCart = (productId) => {
-    const updatedCart = state.addToCarts.filter((product) => product.id !== productId);
+    const updatedCart = state.addToCarts.filter(
+      (product) => product.id !== productId
+    );
     localStorage.setItem("addToCart", JSON.stringify(updatedCart));
     dispatch({ type: "DELETE_TO_CART", payload: productId });
   };
@@ -106,7 +117,7 @@ function Carts() {
             onChange={(e) => setSearchVal(e.target.value)}
           />
           <div className="cart-icon-container">
-            <FaShoppingCart className="fa-shopping-cart" />
+            <FaShoppingCart className="fa-shopping-cart" onClick={() => setOpenModel(!openModel)}/>
             <span className="cart-item-count">{state.addToCarts.length}</span>
           </div>
           <Link to="add-new" className="addBtn">
@@ -114,6 +125,9 @@ function Carts() {
           </Link>
         </div>
       </div>
+      {
+        openModel && <CartModel products={state.addToCarts} DeleteToCart={DeleteToCart}/>
+      }
       <div className="carts">
         {filteredProducts.length <= 0 || state.products.length <= 0 ? (
           <h1 className="header-title">No products in the cart</h1>

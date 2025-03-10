@@ -1,0 +1,124 @@
+.container {
+  position: absolute;
+  right: 250px;
+  width: 45%;
+  max-height: 450px;
+  padding: 10px;
+  background-color: #0f766e;
+  z-index: 100;
+  overflow-y: auto;
+  box-shadow: 0 2px #0f766e;
+}
+.cardModel-container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.cardModel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+  border-radius: 5px;
+  padding: 10px;
+  width: calc(60.33% - 20px);
+  position: relative;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s;
+  background-color: #fff;
+  margin: 5px;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.model-image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-name {
+  font-size: 1.5rem;
+  margin: 10px 0;
+}
+
+.price {
+  font-size: 1.2rem;
+  color: #0f766e;
+  font-weight: bold;
+}
+
+.product-description {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.details {
+  text-align: start;
+  vertical-align: top;
+  display: inline-block;
+  width: 30%;
+  --tw-text-opacity: 1;
+  color: rgb(40 44 63 / var(--tw-text-opacity));
+  font-size: 13px;
+  line-height: 1.42857143;
+  padding: 15px;
+  line-height: 35px;
+  background-color: white;
+  height: 100%;
+}
+
+.details-text {
+  font-size: 0.875rem;
+  line-height: 24px;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+.details-header {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  --tw-text-opacity: 1;
+  color: "#ccc";
+  margin-top: 1.5rem;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+hr {
+  border: 0;
+  border-top: 1px solid;
+  color: black;
+}
+.found-msg {
+  width: 100%;
+  margin: 63px 46px;
+  color: gray;
+}
+
+.cardModel .delete-cart-icon{
+  position: absolute;
+  font-weight: 500;
+  top: 0px;
+  right: 0px;
+  color: rgb(163, 37, 37);
+  font-size: 1.2rem;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
