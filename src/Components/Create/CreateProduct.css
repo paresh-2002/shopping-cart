@@ -76,3 +76,41 @@
   margin-top: 1.25rem;
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .form-container {
+    padding: 15px;
+  }
+
+  .label {
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .input,
+  .select,
+  .button {
+    width: 90%;
+    margin-left: 0;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    font-size: 1.5rem;
+  }
+
+  .form-container {
+    padding: 10px;
+  }
+
+  .input,
+  .select,
+  .button {
+    font-size: 0.875rem;
+  }
+}

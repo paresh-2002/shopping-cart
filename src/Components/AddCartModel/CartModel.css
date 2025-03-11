@@ -38,7 +38,6 @@
   width: 100%;
   height: 200px;
   overflow: hidden;
-  
 }
 
 .product-image {
@@ -106,7 +105,7 @@ hr {
   color: gray;
 }
 
-.cardModel .delete-cart-icon{
+.cardModel .delete-cart-icon {
   position: absolute;
   font-weight: 500;
   top: 0px;
@@ -121,4 +120,90 @@ hr {
   align-items: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+@media (max-width: 1650px) {
+  .container{
+    right: 24px;
+  }
+  .cardModel-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .cardModel {
+    width: 90%;
+  }
+  .details {
+    width: 90%;
+    margin-top: 10px;
+  }
+}
+@media (max-width: 1224px) {
+  .container{
+    right: 24px;
+  }
+  .cardModel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .cardModel {
+    width: 100%;
+  }
+  .details {
+    width: 90%;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    right: 24px;
+    width: 60%;
+    max-height: 400px;
+  }
+
+  .cardModel {
+    flex-direction: column;
+    width: 100%
+  }
+
+  .details {
+    width: 80%;
+    padding: 10px;
+  }
+
+  .product-name {
+    font-size: 1.2rem;
+  }
+
+  .price {
+    font-size: 1rem;
+  }
+
+  .product-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .cardModel {
+    padding: 5px 10px;
+  }
+
+  .product-name {
+    font-size: 1rem;
+  }
+
+  .price {
+    font-size: 0.875rem;
+  }
+
+  .product-description {
+    font-size: 0.75rem;
+  }
 }
