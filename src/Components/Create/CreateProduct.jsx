@@ -53,8 +53,13 @@ function CreateProduct() {
     e.preventDefault();
     setLoading(true);
     const { productName, productPrice, productImg, description } = product;
-
-    if (!productName || !productPrice || !productImg || !description) {
+    
+    if (
+      productName.trim() === "" ||
+      productPrice.trim() === "" ||
+      productImg.trim() === "" ||
+      description.trim() === ""
+    ) {
       setError("All fields must be filled correctly.");
       setLoading(false);
       return;
@@ -95,8 +100,8 @@ function CreateProduct() {
             </label>
             <input
               type="text"
-              required
               name="product_name"
+              required
               id="product_name"
               className="input"
               value={product.productName}

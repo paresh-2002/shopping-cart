@@ -45,13 +45,13 @@ const cartReducer = (state, action) => {
 function Carts() {
   const [state, dispatch] = useReducer(cartReducer, initialState);
   const [searchVal, setSearchVal] = useState("");
-  const [openModel, setOpenModel] = useState(false)
+  const [openModel, setOpenModel] = useState(false);
 
   const filteredProducts = state.products.filter((product) =>
     product?.productName?.toLowerCase().includes(searchVal.toLowerCase())
   );
 
-  useEffect(() => {
+  const getAllData = () => {
     const localProducts = localStorage.getItem("products");
     const localCart = localStorage.getItem("addToCart");
 
@@ -74,6 +74,10 @@ function Carts() {
     if (localCart) {
       dispatch({ type: "ADD_CART", payload: JSON.parse(localCart) });
     }
+  }
+
+  useEffect(() => {
+    getAllData()
   }, []);
 
   const addToCart = (product) => {
