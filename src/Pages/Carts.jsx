@@ -4,7 +4,7 @@ import "./Carts.css";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import Products from "../Data/Products.json";
-import CartModel from "../Components/AddCratModel/CartModel";
+import CartModel from "../Components/AddCartModel/CartModel";
 
 const initialState = {
   products: Products || [],
